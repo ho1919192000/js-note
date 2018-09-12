@@ -252,3 +252,114 @@ function phoneticLookup(val) {
 
 // Change this value to test
 phoneticLookup("charlie");
+
+/*Basic JavaScript: Testing Objects for Properties*/
+// Setup
+var myObj = {
+  gift: "pony",
+  pet: "kitten",
+  bed: "sleigh"
+};
+
+function checkObj(checkProp) {
+  // Conditional (ternary) Operator
+  return myObj.hasOwnProperty(checkProp) ? myObj[checkProp] : "Not Found";
+}
+
+// Test your code by modifying these values
+checkObj("gift");
+
+/*Basic JavaScript: Accessing Nested Objects*/
+
+// Setup
+var myStorage = {
+  "car": {
+    "inside": {
+      "glove box": "maps",
+      "passenger seat": "crumbs"
+     },
+    "outside": {
+      "trunk": "jack"
+    }
+  }
+};
+
+var gloveBoxContents = myStorage.car.inside["glove box"]; // Change this line
+
+/*Basic JavaScript: Accessing Nested Arrays*/
+
+// Setup
+var myPlants = [
+  { 
+    type: "flowers",
+    list: [
+      "rose",
+      "tulip",
+      "dandelion"
+    ]
+  },
+  {
+    type: "trees",
+    list: [
+      "fir",
+      "pine",
+      "birch"
+    ]
+  }  
+];
+
+// Only change code below this line
+
+var secondTree = myPlants[1].list[1]; // Change this line
+
+/*Basic JavaScript: Record Collection*/
+
+// Setup
+var collection = {
+    "2548": {
+      "album": "Slippery When Wet",
+      "artist": "Bon Jovi",
+      "tracks": [ 
+        "Let It Rock", 
+        "You Give Love a Bad Name" 
+      ]
+    },
+    "2468": {
+      "album": "1999",
+      "artist": "Prince",
+      "tracks": [ 
+        "1999", 
+        "Little Red Corvette" 
+      ]
+    },
+    "1245": {
+      "artist": "Robert Palmer",
+      "tracks": [ ]
+    },
+    "5439": {
+      "album": "ABBA Gold"
+    }
+};
+// Keep a copy of the collection for tests
+var collectionCopy = JSON.parse(JSON.stringify(collection));
+
+// Only change code below this line
+function updateRecords(id, prop, value) {
+  let obj = collection[id];
+  if(prop === "tracks" && value !== "") {
+    if(obj[prop]) {
+      obj[prop].push(value);
+    }else{
+      obj[prop] = [value];
+    }
+  }else if(value !== "") {
+    obj[prop] = value;
+  }else{
+    delete obj[prop];
+  }
+  
+  return collection;
+}
+
+// Alter values below to test your code
+updateRecords(5439, "artist", "ABBA");
