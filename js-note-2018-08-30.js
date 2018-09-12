@@ -256,14 +256,14 @@ phoneticLookup("charlie");
 /*Basic JavaScript: Testing Objects for Properties*/
 // Setup
 var myObj = {
-  gift: "pony",
-  pet: "kitten",
-  bed: "sleigh"
+    gift: "pony",
+    pet: "kitten",
+    bed: "sleigh"
 };
 
 function checkObj(checkProp) {
-  // Conditional (ternary) Operator
-  return myObj.hasOwnProperty(checkProp) ? myObj[checkProp] : "Not Found";
+    // Conditional (ternary) Operator
+    return myObj.hasOwnProperty(checkProp) ? myObj[checkProp] : "Not Found";
 }
 
 // Test your code by modifying these values
@@ -273,15 +273,15 @@ checkObj("gift");
 
 // Setup
 var myStorage = {
-  "car": {
-    "inside": {
-      "glove box": "maps",
-      "passenger seat": "crumbs"
-     },
-    "outside": {
-      "trunk": "jack"
+    "car": {
+        "inside": {
+            "glove box": "maps",
+            "passenger seat": "crumbs"
+        },
+        "outside": {
+            "trunk": "jack"
+        }
     }
-  }
 };
 
 var gloveBoxContents = myStorage.car.inside["glove box"]; // Change this line
@@ -290,22 +290,22 @@ var gloveBoxContents = myStorage.car.inside["glove box"]; // Change this line
 
 // Setup
 var myPlants = [
-  { 
-    type: "flowers",
-    list: [
+    {
+        type: "flowers",
+        list: [
       "rose",
       "tulip",
       "dandelion"
     ]
   },
-  {
-    type: "trees",
-    list: [
+    {
+        type: "trees",
+        list: [
       "fir",
       "pine",
       "birch"
     ]
-  }  
+  }
 ];
 
 // Only change code below this line
@@ -317,27 +317,27 @@ var secondTree = myPlants[1].list[1]; // Change this line
 // Setup
 var collection = {
     "2548": {
-      "album": "Slippery When Wet",
-      "artist": "Bon Jovi",
-      "tracks": [ 
-        "Let It Rock", 
-        "You Give Love a Bad Name" 
+        "album": "Slippery When Wet",
+        "artist": "Bon Jovi",
+        "tracks": [
+        "Let It Rock",
+        "You Give Love a Bad Name"
       ]
     },
     "2468": {
-      "album": "1999",
-      "artist": "Prince",
-      "tracks": [ 
-        "1999", 
-        "Little Red Corvette" 
+        "album": "1999",
+        "artist": "Prince",
+        "tracks": [
+        "1999",
+        "Little Red Corvette"
       ]
     },
     "1245": {
-      "artist": "Robert Palmer",
-      "tracks": [ ]
+        "artist": "Robert Palmer",
+        "tracks": []
     },
     "5439": {
-      "album": "ABBA Gold"
+        "album": "ABBA Gold"
     }
 };
 // Keep a copy of the collection for tests
@@ -345,21 +345,103 @@ var collectionCopy = JSON.parse(JSON.stringify(collection));
 
 // Only change code below this line
 function updateRecords(id, prop, value) {
-  let obj = collection[id];
-  if(prop === "tracks" && value !== "") {
-    if(obj[prop]) {
-      obj[prop].push(value);
-    }else{
-      obj[prop] = [value];
+    let obj = collection[id];
+    if (prop === "tracks" && value !== "") {
+        if (obj[prop]) {
+            obj[prop].push(value);
+        } else {
+            obj[prop] = [value];
+        }
+    } else if (value !== "") {
+        obj[prop] = value;
+    } else {
+        delete obj[prop];
     }
-  }else if(value !== "") {
-    obj[prop] = value;
-  }else{
-    delete obj[prop];
-  }
-  
-  return collection;
+
+    return collection;
 }
 
 // Alter values below to test your code
 updateRecords(5439, "artist", "ABBA");
+
+/*Basic JavaScript: Count Backwards With a For Loop*/
+//Push the odd numbers from 9 through 1 to myArray using a for loop.
+
+// Example
+var ourArray = [];
+
+for (var i = 10; i > 0; i -= 2) {
+    ourArray.push(i);
+}
+
+// Setup
+var myArray = [];
+
+// Only change code below this line.
+for (var x = 9; x > 0; x -= 2) {
+    myArray.push(x);
+}
+
+/*Basic JavaScript: Nesting For Loops*/
+
+function multiplyAll(arr) {
+  var product = 1;
+  console.log(arr.length);
+  // Only change code below this line
+  for(var i = 0; i < arr.length ; i++) {
+    for(var j = 0; j < arr[i].length; j++){
+      product *= arr[i][j];
+    } 
+  }
+  // Only change code above this line
+  return product;
+}
+
+// Modify values below to test your code
+multiplyAll([[1,2],[3,4],[5,6,7]]);
+
+/*Basic JavaScript: Profile Lookup*/
+
+//Setup
+var contacts = [
+    {
+        "firstName": "Akira",
+        "lastName": "Laine",
+        "number": "0543236543",
+        "likes": ["Pizza", "Coding", "Brownie Points"]
+    },
+    {
+        "firstName": "Harry",
+        "lastName": "Potter",
+        "number": "0994372684",
+        "likes": ["Hogwarts", "Magic", "Hagrid"]
+    },
+    {
+        "firstName": "Sherlock",
+        "lastName": "Holmes",
+        "number": "0487345643",
+        "likes": ["Intriguing Cases", "Violin"]
+    },
+    {
+        "firstName": "Kristian",
+        "lastName": "Vos",
+        "number": "unknown",
+        "likes": ["JavaScript", "Gaming", "Foxes"]
+    }
+];
+
+
+function lookUpProfile(name, prop){
+// Only change code below this line
+  for(var i = 0; i < contacts.length; i++) {
+    var obj = contacts[i];
+    if(obj.firstName === name){
+      return obj.hasOwnProperty(prop)? obj[prop]:"No such property";
+    }
+  }
+  return "No such contact";
+// Only change code above this line
+}
+
+// Change these values to test your function
+lookUpProfile("Akira", "likes");
