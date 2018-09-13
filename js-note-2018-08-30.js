@@ -445,3 +445,50 @@ function lookUpProfile(name, prop){
 
 // Change these values to test your function
 lookUpProfile("Akira", "likes");
+
+/*Basic JavaScript: Generate Random Whole Numbers within a Range*/
+
+function ourRandomRange(ourMin, ourMax) {
+
+  return Math.floor(Math.random() * (ourMax - ourMin + 1)) + ourMin;
+}
+
+ourRandomRange(1, 9);
+
+// Only change code below this line.
+
+function randomRange(myMin, myMax) {
+
+  return Math.floor(Math.random()*(myMax - myMin + 1)) + myMin; // Change this line
+
+}
+
+// Change these values to test your function
+var myRandom = randomRange(5, 15);
+
+/*Basic JavaScript: Use the parseInt Function*/
+
+function convertToInteger(str) {
+  return parseInt(str);
+}
+
+convertToInteger("56");
+
+/*Basic JavaScript: Use the parseInt Function with a Radix*/
+
+function convertToInteger(str) {
+  return parseInt(str, 2);
+}
+
+convertToInteger("10011");
+
+parseInt("D", 16);
+//13
+
+/*Basic JavaScript: Use Multiple Conditional (Ternary) Operators*/
+
+function checkSign(num) {
+  return num > 0 ? "positive" : num < 0 ? "negative" : "zero";
+}
+
+checkSign(10);
